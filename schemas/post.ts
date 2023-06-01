@@ -9,57 +9,83 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      description: 'Name of project'
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: 'URL of project',
       options: {
         source: 'title',
         maxLength: 96,
       },
     }),
     defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
-    }),
-    defineField({
-      name: 'mainImage',
-      title: 'Main image',
+      name: 'headerImage',
+      title: 'Header Image',
       type: 'image',
-      options: {
-        hotspot: true,
-      },
+      description: 'Image displayed for project preview',
+      fields: [ {
+        name: 'alt',
+        title: 'Alt Text',
+        type: 'string'
+        }
+      ]
     }),
     defineField({
       name: 'categories',
       title: 'Categories',
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
+      description: 'Project category for filters'
     }),
     defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
+      name: 'projectDate',
+      title: 'Project Date',
+      type: 'date',
+      description: 'Format should be: Sep 2021',
+      options: {
+        dateFormat: 'MMM YYYY'
+      }
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
+      name: 'description',
+      title: 'Description',
       type: 'blockContent',
+      description: 'Main copy of the project'
+    }),
+    defineField({
+      name: 'information',
+      title: 'Information',
+      type: 'blockContent',
+      description: 'Additional information of project'
+    }),
+    defineField({
+      name: 'images',
+      title: 'Images',
+      type: 'array',
+      description: 'Photos can be uploaded by batch in the Media tab',
+      of: [{
+        type: 'image',
+        fields: [ {
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string'
+        },
+        {
+          name: 'caption',
+          title: 'Caption',
+          type: 'string'
+        }],
+      }]
     }),
   ],
 
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
-    },
+      media: 'headerImage',
+    }
   },
 })
