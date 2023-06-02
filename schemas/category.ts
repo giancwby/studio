@@ -9,7 +9,8 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      description: 'Project category for filtering'
+      description: 'Project category for filtering',
+      validation: (Rule) => Rule.required()
     })
   ],
 })

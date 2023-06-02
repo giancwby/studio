@@ -9,7 +9,8 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      description: 'Name of project'
+      description: 'Name of project',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'slug',
@@ -20,12 +21,14 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'headerImage',
       title: 'Header Image',
       type: 'image',
       description: 'Image displayed for project preview',
+      validation: (Rule) => Rule.required(),
       fields: [ {
         name: 'alt',
         title: 'Alt Text',
@@ -38,7 +41,8 @@ export default defineType({
       title: 'Categories',
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
-      description: 'Project category for filters'
+      description: 'Project category for filters',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'projectDate',
@@ -53,19 +57,22 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'blockContent',
-      description: 'Main copy of the project'
+      description: 'Main copy of the project',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'information',
       title: 'Information',
       type: 'blockContent',
-      description: 'Additional information of project'
+      description: 'Additional information of project',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'images',
       title: 'Images',
       type: 'array',
       description: 'Photos can be uploaded by batch in the Media tab',
+      validation: (Rule) => Rule.required(),
       of: [{
         type: 'image',
         fields: [ {
