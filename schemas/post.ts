@@ -47,11 +47,9 @@ export default defineType({
     defineField({
       name: 'projectDate',
       title: 'Project Date',
-      type: 'date',
-      description: 'Format should be: Sep 2021',
-      options: {
-        dateFormat: 'MMM YYYY'
-      }
+      type: 'string',
+      description: 'Format (MM YYYY): Sep 2021',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'description',
