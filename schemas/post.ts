@@ -55,14 +55,14 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'blockContent',
-      description: 'Main copy of the project',
+      description: 'Main copy of the project. Use "Shift + Enter" to add spaces between paragraphs.',
       validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'information',
       title: 'Information',
       type: 'blockContent',
-      description: 'Additional information of project',
+      description: 'Additional information of project. Use "Shift + Enter" to add spaces between paragraphs.',
       validation: (Rule) => Rule.required()
     }),
     defineField({
