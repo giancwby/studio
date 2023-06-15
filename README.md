@@ -11,4 +11,11 @@ Now you can do the following things:
 - [Extend and build plugins](https://www.sanity.io/docs/content-studio/extending?utm_source=readme)
 
 - To deploy: npx sanity deploy
-
+- To create build hook,
+    - netlify > build & deploy > build hooks
+    - Name build hook > Save
+    - copy link
+    - sanity studio local repo in integrated terminal:
+    - sanity hook create
+    - production
+    - Hook URL: paste hook URL from Netlify
