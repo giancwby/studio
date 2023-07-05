@@ -24,10 +24,30 @@ export default defineType({
       validation: (Rule) => Rule.required()
     }),
     defineField({
+      name: 'order',
+      title: 'Order',
+      type: 'number',
+      description: 'Determines what order the project will be displayed',
+      validation: (Rule) => Rule.required()
+    }),
+    defineField({
       name: 'headerImage',
       title: 'Header Image',
       type: 'image',
-      description: 'Image displayed for project preview',
+      description: 'First image displayed in project page',
+      validation: (Rule) => Rule.required(),
+      fields: [ {
+        name: 'alt',
+        title: 'Alt Text',
+        type: 'string'
+        }
+      ]
+    }),
+    defineField({
+      name: 'thumbnail',
+      title: 'Thumbnail',
+      type: 'image',
+      description: 'Image displayed when selecting projects',
       validation: (Rule) => Rule.required(),
       fields: [ {
         name: 'alt',
@@ -91,6 +111,7 @@ export default defineType({
     select: {
       title: 'title',
       media: 'headerImage',
+      order: 'order'
     }
   },
 })
